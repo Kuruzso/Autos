@@ -102,6 +102,27 @@ namespace Auto
             conn.Connection.Close();
 
         }
+
+        public static void carbyid()
+        {
+
+            int id;
+            conn.Connection.Open();
+            Console.Write("Kérem az autó azonosítóját ");
+            id = int.Parse(Console.ReadLine());
+
+
+            string sql = $"SELECT * FROM `cars` WHERE id={id}";
+            MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+           reader.Read();
+            Console.WriteLine($"Autó gyártója: {reader.GetString(1)},motorszáma: {reader.GetString(3)} ,típus:{reader.GetString(2)}, gyártási ébe: {reader.GetInt32(4)}");
+
+          
+
+            conn.Connection.Close();
+
+        }
         static void Main(string[] args)
         {
             feltolt();
@@ -109,10 +130,16 @@ namespace Auto
             {
                 Console.WriteLine($"Autó gyártója: {item.Brand},motorszáma: {item.License}");
             }
-            addNewCar();
+        
+         
 
-            updateCar();
-            deletecar();
+            
+            carbyid();
+            
+
+            //addNewCar();
+            //updateCar();
+            //deletecar();
             Console.WriteLine();
             Console.ReadLine();
         }
