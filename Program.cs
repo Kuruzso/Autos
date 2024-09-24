@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,6 +65,23 @@ namespace Auto
             conn.Connection.Close();
         
         }
+        public static void updateCar() {
+
+            
+            int date;
+            int id;
+            conn.Connection.Open();
+            Console.Write("Kérem az autó azonosítóját ");
+             id=int.Parse( Console.ReadLine());
+            Console.Write("Kérem az típusát gyártási évét ");
+            date = int.Parse(Console.ReadLine());
+
+            string sql = $"UPDATE `cars` SET `Date`={date} WHERE id={id}";
+          
+
+            conn.Connection.Close();
+        
+        }
         static void Main(string[] args)
         {
             feltolt();
@@ -72,6 +90,8 @@ namespace Auto
                 Console.WriteLine($"Autó gyártója: {item.Brand},motorszáma: {item.License}");
             }
             addNewCar();
+
+            updateCar();
             Console.WriteLine();
             Console.ReadLine();
         }
