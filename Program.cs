@@ -73,7 +73,7 @@ namespace Auto
             conn.Connection.Open();
             Console.Write("Kérem az autó azonosítóját ");
              id=int.Parse( Console.ReadLine());
-            Console.Write("Kérem az típusát gyártási évét ");
+            Console.Write("Kérem a gyártási évét ");
             date = int.Parse(Console.ReadLine());
 
             string sql = $"UPDATE `cars` SET `Date`={date} WHERE id={id}";
@@ -109,10 +109,10 @@ namespace Auto
             {
                 Console.WriteLine($"Autó gyártója: {item.Brand},motorszáma: {item.License}");
             }
-            //addNewCar();
+            addNewCar();
 
             updateCar();
-            //deletecar();
+            deletecar();
             Console.WriteLine();
             Console.ReadLine();
         }
